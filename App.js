@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 
 import {
 
@@ -21,11 +21,22 @@ import {
 
 const App = () => {
 
+  const [name, setName] = useState('Anjana')
+  const [session, setSession] = useState({ number: 6, title: 'state'})
+  const [current, setCurrent] = useState(true)
+
+  const onCLickHandler = () => {
+    setName('Programming with Anjana')
+    setSession({number: 7, title: 'Style'})
+    setCurrent(false)
+  }
 
   return (
     <View style={styles.body}>
-      <Text style={styles.text}>Programming with Anjana</Text>
-      <Button title="Youtube Channel" onPress={() => {Linking.openURL('https://youtube.com')}}></Button>
+      <Text style={styles.text}>{name}</Text>
+      <Text style={styles.text}>This is session number {session.number} and about {session.title} </Text>
+      <Text style={styles.text}>{current ? 'current session' : 'next session'} </Text>
+      <Button title="Update State" onPress={onCLickHandler}></Button>
 
     </View>
     
